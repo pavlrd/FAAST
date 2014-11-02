@@ -29,7 +29,7 @@ describe Station do
 
   context 'charging system' do
     it 'checks if there enough money passenger has while touching in' do 
-      expect{station.charging_system(passenger)}.to raise_error RuntimeError
+      expect{station.touch_in(passenger)}.to raise_error RuntimeError
     end
 
     it 'do not let to get in to station if not enough money' do

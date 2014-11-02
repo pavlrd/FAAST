@@ -1,7 +1,6 @@
 class Station
 
   attr_reader :train, :passengers
-
  
   def initialize
     @train = nil
@@ -13,17 +12,11 @@ class Station
   end
 
   def touch_in(passenger)
-    charging_system(passenger)
+    raise "There is not enough money on your account" if passenger.account < 2
     @passengers << passenger
   end
 
   def touch_out(passenger)
     @passengers.delete(passenger)
   end
-
-  def charging_system(passenger)
-    raise "There is not enough money on your account" if passenger.account < 2
-  end
-
-
 end
