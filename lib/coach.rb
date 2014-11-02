@@ -16,7 +16,8 @@ class Coach
     @passengers.count == @capacity
   end
 
-  def alight(passenger)
+  def alight(passenger, station)
     @passengers.delete(passenger)
+    station.enter(passenger)
   end
 end

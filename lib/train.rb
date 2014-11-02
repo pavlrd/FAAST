@@ -4,9 +4,9 @@ class Train
 
   attr_reader :coaches
 
-  def initialize(amount = 10)
+  def initialize(options = {})
     @coaches = []
-    train(amount)
+    train(options.fetch(:carriages, 10)) # 10, is default amount of coaches
   end
 
   def add(coach)
