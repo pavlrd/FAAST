@@ -11,6 +11,15 @@ class Station
     @train = train
   end
 
+  def enter(passenger)
+    @passengers << passenger
+  end
+
+  def leave(passenger, coach)
+    @passengers.delete(passenger)
+    coach.enter(passenger)
+  end
+
   def touch_in(passenger)
     raise "There is not enough money on your account" if passenger.account < 2
     @passengers << passenger
