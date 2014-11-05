@@ -12,8 +12,7 @@ describe Coach do
 
   it 'can take passengers' do
     expect(coach.passengers.count).to eq 0
-    coach.enter(passenger)
-    expect(coach.passengers.count).to eq 1
+    expect {coach.enter(passenger)}.to change { coach.passengers.count }.by 1
   end
 
   it 'can hold up to 40 passengers' do
@@ -24,18 +23,14 @@ describe Coach do
   end
 
   it 'let passenger to alight form coach' do
-    coach.enter(passenger)
-    expect(coach.passengers.count).to eq 1
+    expect { coach.enter(passenger) }.to change {coach.passengers.count}.by 1
     expect(station).to receive(:enter)
-    coach.alight(passenger, station)
-    expect(coach.passengers.count).to eq 0
+    expect { coach.alight(passenger, station) }. to change { coach.passengers.count }.by -1
   end
 
   it 'move passenger from train to station' do
-    coach.enter(passenger)
-    expect(coach.passengers.count).to eq 1
+    expect { coach.enter(passenger) }.to change {coach.passengers.count}.by 1
     expect(station).to receive(:enter)
-    coach.alight(passenger, station)
-    expect(coach.passengers.count).to eq 0
+    expect { coach.alight(passenger, station) }. to change { coach.passengers.count }.by -1
   end
 end
