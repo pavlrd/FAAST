@@ -8,7 +8,6 @@ describe Station do
   let(:passenger2) { double :passenger2, account: 2 }
   let(:coach)      { double :coach                  }
 
-
   it 'can hold a train' do 
     expect(station.train).to eq nil
     station.arrive(train)
@@ -21,8 +20,7 @@ describe Station do
   end
 
   it 'let passengers to leave station' do
-    expect(station.passengers.count).to eq 0
-    expect { station.touch_in(passenger2) }.to change { station.passengers.count }.by 1
+    station.touch_in(passenger2)
     expect(passenger2).to receive(:deduct)
     expect { station.touch_out(passenger2) }.to change { station.passengers.count }.by -1
   end
@@ -47,7 +45,5 @@ describe Station do
       expect(passenger2).to receive(:deduct)
       station.touch_out(passenger2)
     end
-
-
   end
 end

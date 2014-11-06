@@ -32,6 +32,5 @@ class Station
   def touch_out(passenger)
     leave(passenger)
     passenger.deduct
-
   end
 end
