@@ -26,3 +26,11 @@ As its stands for good projects to be started, first thing needs to be done is t
 - *Rspec*
 
 - *Ruby*
+
+
+to run 
+
+```
+ruby ./lib/faast.rb
+
+```
