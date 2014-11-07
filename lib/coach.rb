@@ -3,9 +3,7 @@ require_relative 'tube_container'
 class Coach
   include TubeContainer
 
-  def initialize
-     @capacity = 40
-  end
+  MAX_CAPACITY = 40
 
   def go_in(passenger)
     raise "Sorry, coach is full, check another one" if full?
@@ -13,7 +11,7 @@ class Coach
   end
 
   def full?
-    passengers.count == @capacity
+    passengers.count == MAX_CAPACITY
   end
 
   def alight(passenger, station)

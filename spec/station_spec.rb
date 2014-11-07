@@ -1,17 +1,22 @@
 require 'station'
 
 describe Station do
-  
+
   let(:station)    { Station.new                    }
   let(:train)      { double :train                  }
   let(:passenger)  { double :passenger, account: 1  }
   let(:passenger2) { double :passenger2, account: 2 }
   let(:coach)      { double :coach                  }
 
-  it 'can hold a train' do 
+  it 'can accept a train' do
     expect(station.train).to eq false
-    station.arrive(train)
+    station.arrived(train)
     expect(station.train).to eq train
+  end
+
+  it 'let train to move to other station' do
+    station.arrived(train)
+    expect { station.release_train }.to change { station.train }.to be false
   end
 
   it 'let passengers to enter station' do
@@ -29,9 +34,9 @@ describe Station do
     expect { station.touch_in(passenger2) }.to change { station.passengers.count }.by 1
     expect(coach).to receive(:enter)
     expect { station.enter_train(passenger2, coach) }.to change { station.passengers.count }.by -1
-  end 
+  end
 
-  context 'charging system work with passenger account' do
+  context 'station charging system work with passenger account' do
 
     it 'do not let to get in to station if not enough money' do
       expect{station.touch_in(passenger)}.to raise_error RuntimeError

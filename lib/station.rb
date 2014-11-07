@@ -3,14 +3,18 @@ require_relative 'tube_container'
 class Station
   include TubeContainer
 
-  attr_reader :train 
- 
+  attr_reader :train
+
   def initialize
-    @train = false
+    release_train
   end
 
-  def arrive(train)
+  def arrived(train)
     @train = train
+  end
+
+  def release_train
+    @train = false
   end
 
   def enter_train(passenger, coach)
