@@ -19,7 +19,7 @@ describe Coach do
     expect(coach.passengers.count).to eq 0
     fill_coach
     expect(coach).to be_full
-    expect{ coach.go_in(passenger) }.to raise_error(RuntimeError)
+    expect{ coach.go_in(passenger, station) }.to raise_error(RuntimeError)
   end
 
   it 'let passenger to alight form coach' do
@@ -28,9 +28,9 @@ describe Coach do
     expect { coach.alight(passenger, station) }. to change { coach.passengers.count }.by -1
   end
 
-  it 'move passenger from train to station' do
-    expect { coach.enter(passenger) }.to change {coach.passengers.count}.by 1
-    expect(station).to receive(:enter)
-    expect { coach.alight(passenger, station) }. to change { coach.passengers.count }.by -1
+  it 'move passenger from station to train' do
+    coach.enter(passenger)
+    expect(station).to receive(:leave).with(passenger)
+    coach.go_in(passenger, station) 
   end
 end

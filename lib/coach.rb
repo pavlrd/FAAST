@@ -5,8 +5,9 @@ class Coach
 
   MAX_CAPACITY = 40
 
-  def go_in(passenger)
+  def go_in(passenger, station)
     raise "Sorry, coach is full, check another one" if full?
+    station.leave(passenger)
     enter(passenger)
   end
 
