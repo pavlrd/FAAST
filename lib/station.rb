@@ -1,27 +1,21 @@
-class Station
+require_relative 'tube_container'
 
-  attr_reader :train, :passengers
+class Station
+  include TubeContainer
+
+  attr_reader :train 
  
   def initialize
-    @train = nil
-    @passengers = []
+    @train = false
   end
 
   def arrive(train)
     @train = train
   end
 
-  def enter(passenger)
-    @passengers << passenger
-  end
-
   def enter_train(passenger, coach)
     leave(passenger)
     coach.enter(passenger)
-  end
-
-  def leave(passenger)
-    @passengers.delete(passenger)
   end
 
   def touch_in(passenger)

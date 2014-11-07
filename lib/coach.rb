@@ -1,23 +1,23 @@
-class Coach
+require_relative 'tube_container'
 
-  attr_reader :passengers
+class Coach
+  include TubeContainer
 
   def initialize
-     @passengers = []
      @capacity = 40
   end
 
-  def enter(passenger)
+  def go_in(passenger)
     raise "Sorry, coach is full, check another one" if full?
-    @passengers << passenger
+    enter(passenger)
   end
 
   def full?
-    @passengers.count == @capacity
+    passengers.count == @capacity
   end
 
   def alight(passenger, station)
-    @passengers.delete(passenger)
+    leave(passenger)
     station.enter(passenger)
   end
 end

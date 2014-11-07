@@ -19,7 +19,7 @@ describe Coach do
     expect(coach.passengers.count).to eq 0
     fill_coach
     expect(coach).to be_full
-    expect{ coach.enter(passenger) }.to raise_error(RuntimeError)
+    expect{ coach.go_in(passenger) }.to raise_error(RuntimeError)
   end
 
   it 'let passenger to alight form coach' do

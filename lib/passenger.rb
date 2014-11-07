@@ -1,6 +1,6 @@
 class Passenger
 
-  attr_accessor :account
+  attr_reader :account
 
   def initialize(options={})
     @account = options.fetch(:account, 1)

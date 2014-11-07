@@ -9,7 +9,7 @@ describe Station do
   let(:coach)      { double :coach                  }
 
   it 'can hold a train' do 
-    expect(station.train).to eq nil
+    expect(station.train).to eq false
     station.arrive(train)
     expect(station.train).to eq train
   end
