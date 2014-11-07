@@ -14,6 +14,9 @@ Task is to implement FAAST Tube System (Fast And Accessible Super Tube).
   • BONUS - add a charging system where the passengers can only touch in a station (and access the train) if their account has more than 2 GBP.
 ```
 
+######My approach
+**As its stands for good projects to be started, first thing needs to be done is to understand what the problem actually is. I consider some nouns and verbs, which stands after for responsibilities, classes and collaborators. The Classes I decided relevant is *Passenger, Train, Station, Coach.* In the end I did small refactoring and implement *TubeContainer* module.**
+
 #####Technology and technics used:
 
 - *Object Oriented Design and Programming (OOD, OOP)*
