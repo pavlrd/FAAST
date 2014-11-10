@@ -10,7 +10,6 @@ describe Train do
   end
 
   it 'can add another carriage' do
-    expect(train.coaches.count).to eq 10
     train.add(coach)
     expect(train.coaches.count).to eq 11
   end
