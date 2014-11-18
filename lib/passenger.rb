@@ -26,12 +26,12 @@ class Passenger
   end
 
   def board(train, coach_number, station)
-    train[coach_number].board(self)
+    train[coach_number].board(self) if station.trains.include?(train)
     station.leave(self)
   end
 
   def alight(train, coach_number, station)
-    train[coach_number].alight(self)
+    train[coach_number].alight(self) if station.trains.include?(train)
     station.enter(self)
   end
 
