@@ -1,13 +1,25 @@
 class Passenger
 
-  attr_reader :account
+  attr_reader :credit
+
+  TRIP_COST = 2
+
+  DEFAULT_CREDIT = 2
 
   def initialize(options={})
-    @account = options.fetch(:account, 1)
+    @credit = options.fetch(:credit, DEFAULT_CREDIT )
   end
 
   def deduct
-    @account -= 2
+    @credit -= TRIP_COST
+  end
+
+  def enter(place)
+    place.enter(self)
+  end
+
+  def leave(place)
+    place.leave(self)
   end
 
 end
