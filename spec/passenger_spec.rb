@@ -8,7 +8,7 @@ describe Passenger do
 
   let(:passenger) { Passenger.new   }
   let(:station)   { double :station }
-  let(:coach)     { double :coach   }
+  let(:train)     { double :train   }
  
   it 'has default amount money when initialized' do
     expect(passenger.credit).to eq DEFAULT_CREDIT
@@ -23,6 +23,10 @@ describe Passenger do
     expect { passenger.deduct }.to change { passenger.credit }.by -TRIP_COST
   end
 
+  it 'not at the station when initialized' do
+    expect(passenger.at_the_station).to be false
+  end
+
   it 'can enter station' do
     allow(station).to receive(:enter).with(passenger)
     passenger.enter(station)
@@ -33,13 +37,13 @@ describe Passenger do
     passenger.leave(station)
   end
 
-  it 'can enter coach if train at the station' do
-    allow(coach).to receive(:enter).with(passenger)
-    passenger.enter(coach)
+  it 'can enter train if train at the station' do
+    allow(train).to receive(:enter).with(passenger)
+    passenger.enter(train)
   end
 
-  it 'can leave coach if train at the station' do
-    allow(coach).to receive(:leave).with(passenger)
-    passenger.leave(coach)
+  it 'can leave train if train at the station' do
+    allow(train).to receive(:leave).with(passenger)
+    passenger.leave(train)
   end
 end
