@@ -20,21 +20,23 @@ class Station
     @trains.delete(train)
   end
 
-  def enter_train(passenger, train)
-    @passengers.delete(passenger)
-    raise "Sorry, you can't enter train as it's not at the station right now" if !@trains.include?(train)
-    train.enter(passenger)
-  end
-
-  def enter(passenger)
+  def touch_in(passenger)
     raise "There is not enough money on your account" if passenger.credit < 2
     @passengers << passenger
     passenger.in_the_tube = true
   end
 
-  def leave(passenger, train = nil)
+  def touch_out(passenger)
     @passengers.delete(passenger)
-    passenger.deduct if train == nil
+    passenger.deduct
     passenger.in_the_tube = false
+  end
+
+  def enter(passenger)
+    @passengers << passenger
+  end
+
+  def leave(passenger)
+    @passengers.delete(passenger)
   end
 end
