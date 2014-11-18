@@ -17,12 +17,22 @@ class Passenger
     @credit -= TRIP_COST
   end
 
-  def enter(place)
-    place.enter(self)
+  def touch_in(station)
+    station.touch_in(self)
   end
 
-  def leave(place)
-    place.leave(self)
+  def touch_out(station)
+    station.touch_out(self)
+  end
+
+  def board(train, coach_number, station)
+    train[coach_number].board(self)
+    station.leave(self)
+  end
+
+  def alight(train, coach_number, station)
+    train[coach_number].alight(self)
+    station.enter(self)
   end
 
 end
