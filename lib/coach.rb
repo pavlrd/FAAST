@@ -1,22 +1,24 @@
-require_relative 'tube_container'
-
 class Coach
-  include TubeContainer
+
+  attr_reader :passengers
 
   MAX_CAPACITY = 40
 
-  def go_in(passenger, station)
-    raise "Sorry, coach is full, check another one" if full?
-    station.leave(passenger)
-    enter(passenger)
+  def initialize
+    @passengers = []
   end
 
   def full?
-    passengers.count == MAX_CAPACITY
+    @passengers.count == MAX_CAPACITY
   end
 
-  def alight(passenger, station)
-    leave(passenger)
-    station.enter(passenger)
+  def board(passenger)
+    raise "Sorry, coach is full, check another one" if full?
+    raise "You not in the tube right now, sorry" if !passenger.in_the_tube
+    @passengers << passenger  
+  end
+
+  def leave(passenger)
+    @passengers.delete(passenger)
   end
 end
