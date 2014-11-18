@@ -39,7 +39,7 @@ describe Passenger do
     passenger.touch_out(station)
   end
 
-  it 'can enter train if train at the station' do
+  it 'can enter coach if train at the station' do
     coach = double :coach
     train = [coach, :coach2]
     allow(coach).to receive(:board).with(passenger)
@@ -48,7 +48,7 @@ describe Passenger do
     passenger.board(train, COACH_NUMBER, station )
   end
 
-  it 'can leave train if train at the station' do
+  it 'can leave coach if train at the station' do
     coach = double :coach
     train = [coach, :coach2]
     allow(coach).to receive(:alight).with(passenger)

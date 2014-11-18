@@ -18,4 +18,5 @@ class Train
   def train(number)
     number.times { @coaches << Coach.new }
   end
+  
 end
