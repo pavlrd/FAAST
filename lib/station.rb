@@ -1,5 +1,3 @@
-require_relative 'tube_container'
-
 class Station
 
   attr_reader :trains, :passengers
@@ -28,14 +26,15 @@ class Station
     train.enter(passenger)
   end
 
-
   def enter(passenger)
     raise "There is not enough money on your account" if passenger.credit < 2
     @passengers << passenger
+    passenger.in_the_tube = true
   end
 
-  def leave(passenger)
+  def leave(passenger, train = nil)
     @passengers.delete(passenger)
-    passenger.deduct
+    passenger.deduct if train == nil
+    passenger.in_the_tube = false
   end
 end
