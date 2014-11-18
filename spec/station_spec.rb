@@ -4,51 +4,55 @@ describe Station do
 
   let(:station)    { Station.new                    }
   let(:train)      { double :train                  }
-  let(:passenger)  { double :passenger, account: 1  }
-  let(:passenger2) { double :passenger2, account: 2 }
+  let(:passenger)  { double :passenger, credit: 1  }
+  let(:passenger2) { double :passenger2, credit: 2 }
   let(:coach)      { double :coach                  }
 
+  PLATFORM_NUMBER = 1
+
   it 'can accept a train' do
-    expect(station.train).to eq false
-    station.arrived(train)
-    expect(station.train).to eq train
+    expect(station.trains.count).to eq 0
+    station.arrived_at_platform(train, PLATFORM_NUMBER)
+    expect(station.trains.count).to eq 1
   end
 
   it 'let train to move to other station' do
-    station.arrived(train)
-    expect { station.release_train }.to change { station.train }.to be false
+    station.arrived_at_platform(train, PLATFORM_NUMBER)
+    expect { station.release_train(train) }.to change { station.trains.count }.by -1
   end
 
   it 'let passengers to enter station' do
     expect(station.passengers.count). to eq 0
-    expect { station.touch_in(passenger2) }.to change { station.passengers.count }.by 1
+    expect { station.enter(passenger2) }.to change { station.passengers.count }.by 1
   end
 
   it 'let passengers to leave station' do
-    station.touch_in(passenger2)
+    station.enter(passenger2)
     expect(passenger2).to receive(:deduct)
-    expect { station.touch_out(passenger2) }.to change { station.passengers.count }.by -1
+    expect { station.leave(passenger2) }.to change { station.passengers.count }.by -1
   end
 
-  it 'let passenger to move from station to train' do
-    expect { station.touch_in(passenger2) }.to change { station.passengers.count }.by 1
-    expect(coach).to receive(:enter)
-    expect { station.enter_train(passenger2, coach) }.to change { station.passengers.count }.by -1
+  it 'let passenger to move from station to train if train at the station' do
+    station.enter(passenger2) 
+    expect(train).to receive(:enter)
+    station.arrived_at_platform(train, 2)
+    station.enter_train(passenger2, train)
   end
 
-  context 'station charging system work with passenger account' do
+  context 'station charging system work with passengers creditc' do
 
     it 'do not let to get in to station if not enough money' do
-      expect{station.touch_in(passenger)}.to raise_error RuntimeError
+      expect{station.enter(passenger)}.to raise_error RuntimeError
     end
 
     it 'let to get in if account has enough money' do
-      expect { station.touch_in(passenger2) }.to change { station.passengers.count }.by 1
+      expect { station.enter(passenger2) }.to change { station.passengers.count }.by 1
     end
 
     it 'deduct money when customer leaves the station' do
       expect(passenger2).to receive(:deduct)
-      station.touch_out(passenger2)
+      station.leave(passenger2)
     end
   end
 end
+
