@@ -23,8 +23,8 @@ describe Passenger do
     expect { passenger.deduct }.to change { passenger.credit }.by -TRIP_COST
   end
 
-  it 'not at the station when initialized' do
-    expect(passenger.at_the_station).to be false
+  it 'not in the tube when initialized' do
+    expect(passenger.in_the_tube).to be false
   end
 
   it 'can enter station' do

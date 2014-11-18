@@ -2,7 +2,7 @@ class Passenger
 
   attr_reader :credit
 
-  attr_accessor :at_the_station
+  attr_accessor :in_the_tube
 
   TRIP_COST = 2
 
@@ -10,7 +10,7 @@ class Passenger
 
   def initialize(options={})
     @credit = options.fetch(:credit, DEFAULT_CREDIT )
-    @at_the_station = false
+    @in_the_tube = false
   end
 
   def deduct
