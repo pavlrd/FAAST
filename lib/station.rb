@@ -1,11 +1,13 @@
-class Station
+require_relative 'container'
 
-  attr_reader :trains, :passengers
+class Station
+  include Container
+
+  attr_reader :trains
 
   DEFAULT_PLATFORMS = 2
 
   def initialize(options = {})
-    @passengers = []
     @platform_numbers = options.fetch(:platforms, DEFAULT_PLATFORMS)
     @trains = {}
   end
@@ -22,21 +24,13 @@ class Station
 
   def touch_in(passenger)
     raise "There is not enough money on your account" if passenger.credit < 2
-    @passengers << passenger
+    enter(passenger)
     passenger.in_the_tube = true
   end
 
   def touch_out(passenger)
-    @passengers.delete(passenger)
+    leave(passenger)
     passenger.deduct
     passenger.in_the_tube = false
-  end
-
-  def enter(passenger)
-    @passengers << passenger
-  end
-
-  def leave(passenger)
-    @passengers.delete(passenger)
   end
 end
