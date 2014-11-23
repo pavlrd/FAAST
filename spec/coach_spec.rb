@@ -2,6 +2,8 @@ require 'coach'
 
 describe Coach do
 
+  it_behaves_like "container"
+
   COACH_CAPACITY = 40 
 
   let(:coach)      { Coach.new         }

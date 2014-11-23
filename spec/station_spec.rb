@@ -2,6 +2,8 @@ require 'station'
 
 describe Station do
 
+  it_behaves_like "container"
+
   let(:station)    { Station.new                    }
   let(:train)      { double :train                  }
   let(:passenger)  { double :passenger, credit: 1   }
