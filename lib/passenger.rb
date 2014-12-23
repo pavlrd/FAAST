@@ -10,7 +10,7 @@ class Passenger
 
   def initialize(options={})
     @credit = options.fetch(:credit, DEFAULT_CREDIT )
-    @in_the_tube = false
+    @in_the_tube = false #location
   end
 
   def deduct
