@@ -1,4 +1,5 @@
 require 'coach'
+require_relative 'container_shared_examples'
 
 describe Coach do
 

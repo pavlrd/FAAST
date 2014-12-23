@@ -12,7 +12,7 @@ class Train
   end
 
   def add(coach)
-    @coaches << coach
+    coaches << coach
   end
 
   def train(number)

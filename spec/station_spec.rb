@@ -1,4 +1,5 @@
 require 'station'
+require_relative 'container_shared_examples'
 
 describe Station do
 
