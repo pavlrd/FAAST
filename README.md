@@ -16,10 +16,10 @@ Implement FAAST System (Fast And Accessible Super Tube). Test it first.
   • BONUS - add a charging system where the passengers can only touch in a station (and 
     access the train) if their account has more than 2 GBP.
 
-#####MY APPROACH
+####MY APPROACH
 As its stands for good projects to be started, first thing needs to be done is to understand what the problem actually is. I consider some nouns and verbs, which stands after for responsibilities, classes and collaborators. The Classes I decided relevant is **Passenger, Train, Station, Coach.** In the end I did small refactoring and implemented **TubeContainer**module.
 
-#####TECHNOLOGIES:
+####TECHNOLOGIES:
 
 - *Ruby*
 
@@ -33,7 +33,7 @@ As its stands for good projects to be started, first thing needs to be done is t
 
 - *Object Oriented Programming (OOP)*
 
-#####HOW TO RUN
+####HOW TO RUN
 
 type in your terminal/commandline
 
@@ -42,13 +42,13 @@ ruby ./lib/faast.rb
 
 ```
 
-#####CODE SNIPPET
+####CODE SNIPPET
 
 My Train Class
 
-![alt tag](https://raw.github.com/username/faast/master/public/train_class.png)
+![alt tag](https://github.com/PaweI/FAAST/blob/master/public/train_class.png)
 
-#####FUTURE IMPROVEMENTS
+####FUTURE IMPROVEMENTS
 
 I would like to not check if passenger in the tube system, but rather verify if he/she is at the particular station in order to reduce complexity of Passenger class. 
 
