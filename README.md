@@ -6,14 +6,14 @@ Implement FAAST System (Fast And Accessible Super Tube). Test it first.
 
 **The FAAST system will cater for the following:**
 
-  • There will be a number of trains inside the system.
-  • Trains will travel from station to station.
-  • Inside of a station, when the train stops, passengers will alight and enter the 
+  - There will be a number of trains inside the system.
+  - Trains will travel from station to station.
+  - Inside of a station, when the train stops, passengers will alight and enter the 
     carriages of the train.
-  • A Passenger will touch in at the station and touch out at the destination station.
-  • Each coach of a train can hold up to 40 passengers.
-  • Each train is made of a number of coaches.
-  • BONUS - add a charging system where the passengers can only touch in a station (and 
+  - A Passenger will touch in at the station and touch out at the destination station.
+  - Each coach of a train can hold up to 40 passengers.
+  - Each train is made of a number of coaches.
+  - BONUS - add a charging system where the passengers can only touch in a station (and 
     access the train) if their account has more than 2 GBP.
 
 ####MY APPROACH
@@ -47,6 +47,10 @@ ruby ./faast.rb
 My Train Class
 
 ![alt tag](https://github.com/PaweI/FAAST/blob/master/public/train_class.png)
+
+####WHAT I'VE LEARNT
+
+That there is always a lot of ways to solve a problem. But try not to Overthink one cause you can end up with job undone, and with lots of unnecessary complexity. And before writing any code, first thing is to understand what you need to do and how, only then CODE. 
 
 ####FUTURE IMPROVEMENTS
 
