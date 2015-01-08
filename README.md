@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/palyrex/FAAST/badges/gpa.svg)](https://codeclimate.com/github/palyrex/FAAST)
+
 ####Week 1 Challenge at Makers Academy!
 
 ####SYNOPSIS
