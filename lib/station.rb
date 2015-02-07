@@ -25,12 +25,10 @@ class Station
   def touch_in(passenger)
     raise "There is not enough money on your account" if passenger.credit < 2
     enter(passenger)
-    passenger.in_the_tube = true
   end
 
   def touch_out(passenger)
     leave(passenger)
     passenger.deduct
-    passenger.in_the_tube = false
   end
 end

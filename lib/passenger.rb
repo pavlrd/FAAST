@@ -19,10 +19,12 @@ class Passenger
 
   def touch_in(station)
     station.touch_in(self)
+    self.in_the_tube = true
   end
 
   def touch_out(station)
     station.touch_out(self)
+    self.in_the_tube = false
   end
 
   def board(train, coach_number, station)
