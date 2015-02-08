@@ -4,7 +4,7 @@ module Container
     @passengers ||= []
   end
 
-   def enter(passenger)
+  def enter(passenger)
     passengers << passenger
   end
 

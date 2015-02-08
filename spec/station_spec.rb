@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'station'
 require_relative 'container_shared_examples'
 
@@ -13,7 +14,7 @@ describe Station do
 
   PLATFORM_NUMBER = 1
 
-  it 'leet train to arrive' do
+  it 'let train to arrive' do
     expect(station.trains.count).to eq 0
     station.arrived_at_platform(train, PLATFORM_NUMBER)
     expect(station.trains.count).to eq 1
@@ -36,6 +37,14 @@ describe Station do
     expect(passenger2).to receive(:deduct)
     allow(passenger2).to receive(:in_the_tube=).with(false)
     expect { station.touch_out(passenger2) }.to change { station.passengers.count }.by -1
+  end
+
+  it 'display if train at the station' do
+    expect(station.train_at_the_station?(train)).to be false
+  end
+
+  it 'display if train not at the station' do
+    expect(station.train_not_at_the_station?(train)).to be true
   end
 
   context 'station charging system work with passengers credit' do

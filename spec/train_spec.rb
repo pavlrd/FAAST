@@ -1,4 +1,5 @@
-require 'Train'
+require 'spec_helper'
+require 'train'
 
 describe Train do
 

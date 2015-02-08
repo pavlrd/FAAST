@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'coach'
 require_relative 'container_shared_examples'
 

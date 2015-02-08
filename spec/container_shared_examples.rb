@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'container'
 
 shared_examples "container" do

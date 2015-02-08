@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'passenger'
 
 describe Passenger do
@@ -43,7 +44,7 @@ describe Passenger do
     coach = double :coach
     train = [coach, :coach2]
     allow(coach).to receive(:board).with(passenger)
-    allow(station).to receive_message_chain(:trains, :include?).with(train).and_return true
+    allow(station).to receive(:train_not_at_the_station?).and_return false
     allow(station).to receive(:leave).with(passenger)
     passenger.board(train, COACH_NUMBER, station )
   end
@@ -52,7 +53,7 @@ describe Passenger do
     coach = double :coach
     train = [coach, :coach2]
     allow(coach).to receive(:alight).with(passenger)
-    allow(station).to receive_message_chain(:trains, :include?).with(train).and_return true
+    allow(station).to receive(:train_not_at_the_station?).and_return false
     allow(station).to receive(:enter).with(passenger)
     passenger.alight(train, COACH_NUMBER, station)
   end

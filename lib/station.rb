@@ -31,4 +31,13 @@ class Station
     leave(passenger)
     passenger.deduct
   end
+
+  def train_at_the_station?(train)
+    @trains.include?(train)
+  end
+
+  def train_not_at_the_station?(train)
+    !train_at_the_station?(train)
+  end
+  
 end

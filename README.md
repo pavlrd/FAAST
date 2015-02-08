@@ -48,7 +48,28 @@ ruby ./faast.rb
 
 My Train Class
 
-![alt tag](https://github.com/PaweI/FAAST/blob/master/public/train_class.png)
+```ruby
+class Train
+
+  attr_reader :coaches
+
+  DEFAULT_COACHES = 10
+
+  def initialize(options = {})
+    @coaches = []
+    train(options.fetch(:carriages, DEFAULT_COACHES)) 
+  end
+
+  def add(coach)
+    coaches << coach
+  end
+
+  def train(number)
+    number.times { @coaches << Coach.new }
+  end
+  
+end
+```
 
 ####WHAT I'VE LEARNT
 

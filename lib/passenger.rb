@@ -28,15 +28,21 @@ class Passenger
   end
 
   def board(train, coach_number, station)
-    raise "Sorry, you can't board train yet" if !station.trains.include?(train)
+    error_message("board", train, station)
     train[coach_number].board(self) 
     station.leave(self)
   end
 
   def alight(train, coach_number, station)
-    raise "Sorry, you can't alight from train yet" if !station.trains.include?(train)
+    error_message("alight", train, station)
     train[coach_number].alight(self)
     station.enter(self)
+  end
+
+  private
+
+  def error_message(action, train, station)
+    raise "Sorry, you can't #{action} train yet" if station.train_not_at_the_station?(train)
   end
 
 end
