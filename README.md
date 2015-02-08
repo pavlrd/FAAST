@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/palyrex/FAAST/badges/gpa.svg)](https://codeclimate.com/github/palyrex/FAAST)
+[![Code Climate](https://codeclimate.com/github/palyrex/FAAST/badges/gpa.svg)](https://codeclimate.com/github/palyrex/FAAST) [![Test Coverage](https://codeclimate.com/github/palyrex/FAAST/badges/coverage.svg)](https://codeclimate.com/github/palyrex/FAAST)
 
 ####Week 1 Challenge at Makers Academy!
 
