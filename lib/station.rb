@@ -13,8 +13,8 @@ class Station
   end
 
   def arrived_at_platform(train, platform_number)
-    raise "Sorry plaform is in use now" if @trains.values.include?(platform_number)
-    raise "Platform does not exist!" if platform_number > @platform_numbers 
+    fail "Sorry plaform is in use now" if @trains.values.include?(platform_number)
+    fail "Platform does not exist!" if platform_number > @platform_numbers 
     trains[train] = platform_number 
   end
 
@@ -23,7 +23,7 @@ class Station
   end
 
   def touch_in(passenger)
-    raise "There is not enough money on your account" if passenger.credit < 2
+    fail "There is not enough money on your account" if passenger.credit < 2
     enter(passenger)
   end
 

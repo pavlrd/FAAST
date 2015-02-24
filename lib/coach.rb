@@ -10,8 +10,8 @@ class Coach
   end
 
   def board(passenger)
-    raise "Sorry, coach is full, check another one" if full?
-    raise "You not in the tube right now, sorry" if !passenger.in_the_tube
+    fail "Sorry, coach is full, check another one" if full?
+    fail "You not in the tube right now, sorry" unless passenger.in_the_tube
     enter(passenger)
   end
 end
