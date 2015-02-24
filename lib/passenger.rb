@@ -1,5 +1,6 @@
+# quite heavy class, with loads of methods related to passenger entering
+# and leaving station and train
 class Passenger
-
   attr_reader :credit
 
   attr_accessor :in_the_tube
@@ -8,9 +9,9 @@ class Passenger
 
   DEFAULT_CREDIT = 2
 
-  def initialize(options={})
-    @credit = options.fetch(:credit, DEFAULT_CREDIT )
-    @in_the_tube = false #location
+  def initialize(options = {})
+    @credit = options.fetch(:credit, DEFAULT_CREDIT)
+    @in_the_tube = false # location
   end
 
   def deduct
@@ -28,13 +29,13 @@ class Passenger
   end
 
   def board(train, coach_number, station)
-    error_message("board", train, station)
-    train[coach_number].board(self) 
+    error_message('board', train, station)
+    train[coach_number].board(self)
     station.leave(self)
   end
 
   def alight(train, coach_number, station)
-    error_message("alight", train, station)
+    error_message('alight', train, station)
     train[coach_number].alight(self)
     station.enter(self)
   end
@@ -42,7 +43,6 @@ class Passenger
   private
 
   def error_message(action, train, station)
-    raise "Sorry, you can't #{action} train yet" if station.train_not_at_the_station?(train)
+    fail "Sorry, you can't #{action} train yet" if station.train_not_at_the_station?(train)
   end
-
 end

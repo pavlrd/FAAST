@@ -3,10 +3,9 @@ require 'coach'
 require_relative 'container_shared_examples'
 
 describe Coach do
+  it_behaves_like 'container'
 
-  it_behaves_like "container"
-
-  COACH_CAPACITY = 40 
+  COACH_CAPACITY = 40
 
   let(:coach)      { Coach.new         }
   let(:passenger)  { double :passenger }
@@ -24,6 +23,6 @@ describe Coach do
     allow(passenger).to receive(:in_the_tube).and_return true
     COACH_CAPACITY.times { coach.board(passenger) }
     expect(coach).to be_full
-    expect{ coach.board(passenger) }.to raise_error(RuntimeError)
+    expect { coach.board(passenger) }.to raise_error(RuntimeError)
   end
 end

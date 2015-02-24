@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'passenger'
 
 describe Passenger do
-
   TRIP_COST = 2
 
   DEFAULT_CREDIT = 2
@@ -12,7 +11,7 @@ describe Passenger do
   let(:passenger) { Passenger.new   }
   let(:station)   { double :station }
   let(:train)     { double [:coach] }
- 
+
   it 'has default amount money when initialized' do
     expect(passenger.credit).to eq DEFAULT_CREDIT
   end
@@ -23,7 +22,7 @@ describe Passenger do
   end
 
   it 'allow to deduct money from credit' do
-    expect { passenger.deduct }.to change { passenger.credit }.by -TRIP_COST
+    expect { passenger.deduct }.to change { passenger.credit }.by(-TRIP_COST)
   end
 
   it 'not in the tube when initialized' do
@@ -46,7 +45,7 @@ describe Passenger do
     allow(coach).to receive(:board).with(passenger)
     allow(station).to receive(:train_not_at_the_station?).and_return false
     allow(station).to receive(:leave).with(passenger)
-    passenger.board(train, COACH_NUMBER, station )
+    passenger.board(train, COACH_NUMBER, station)
   end
 
   it 'can leave coach if train at the station' do

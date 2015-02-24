@@ -3,14 +3,13 @@ require 'station'
 require_relative 'container_shared_examples'
 
 describe Station do
+  it_behaves_like 'container'
 
-  it_behaves_like "container"
-
-  let(:station)    { Station.new                    }
-  let(:train)      { double :train                  }
-  let(:passenger)  { double :passenger, credit: 1   }
-  let(:passenger2) { double :passenger2, credit: 2  }
-  let(:coach)      { double :coach                  }
+  let(:station)    { Station.new                   }
+  let(:train)      { double :train                 }
+  let(:passenger)  { double :passenger, credit: 1  }
+  let(:passenger2) { double :passenger2, credit: 2 }
+  let(:coach)      { double :coach                 }
 
   PLATFORM_NUMBER = 1
 
@@ -22,7 +21,7 @@ describe Station do
 
   it 'let train to depart' do
     station.arrived_at_platform(train, PLATFORM_NUMBER)
-    expect { station.release_train(train) }.to change { station.trains.count }.by -1
+    expect { station.release_train(train) }.to change { station.trains.count }.by(-1)
   end
 
   it 'let passengers to enter station' do
@@ -36,7 +35,7 @@ describe Station do
     station.touch_in(passenger2)
     expect(passenger2).to receive(:deduct)
     allow(passenger2).to receive(:in_the_tube=).with(false)
-    expect { station.touch_out(passenger2) }.to change { station.passengers.count }.by -1
+    expect { station.touch_out(passenger2) }.to change { station.passengers.count }.by(-1)
   end
 
   it 'display if train at the station' do
@@ -48,9 +47,8 @@ describe Station do
   end
 
   context 'station charging system work with passengers credit' do
-
     it 'do not let to get in to station if not enough money' do
-      expect{station.touch_in(passenger)}.to raise_error RuntimeError
+      expect { station.touch_in(passenger) }.to raise_error RuntimeError
     end
 
     it 'let to get in if account has enough money' do
@@ -65,4 +63,3 @@ describe Station do
     end
   end
 end
-

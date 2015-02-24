@@ -1,5 +1,5 @@
+# similar methods for station and train extracted in container
 module Container
-
   def passengers
     @passengers ||= []
   end
@@ -11,5 +11,4 @@ module Container
   def leave(passenger)
     passengers.delete(passenger)
   end
-
 end

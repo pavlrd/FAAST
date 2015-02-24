@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'train'
 
 describe Train do
-
   DEFAULT_AMOUNT_COACHES = 10
 
   let(:train)     { Train.new         }
@@ -18,5 +17,4 @@ describe Train do
     train.add(coach)
     expect(train.coaches.count).to eq 11
   end
-  
-end 
+end
