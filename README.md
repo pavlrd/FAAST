@@ -50,7 +50,6 @@ My Train Class
 
 ```ruby
 class Train
-
   attr_reader :coaches
 
   DEFAULT_COACHES = 10
@@ -67,7 +66,6 @@ class Train
   def train(number)
     number.times { @coaches << Coach.new }
   end
-  
 end
 ```
 
